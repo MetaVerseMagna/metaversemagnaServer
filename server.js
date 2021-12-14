@@ -1,6 +1,7 @@
 require("express-async-errors");
 const app = require("express")();
 const { PORT } = require("./src/config");
+require('./src/config/web3.config')();
 
 
 // Pre-route middlewares

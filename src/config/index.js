@@ -35,6 +35,7 @@ module.exports = {
   "blockchain": {
     CONTRACT_ADDRESS_721: env.CONTRACT_ADDRESS_721,
     NODE: env.NODE,
-    PRIVATE_KEY: env.PRIVATE_KEY
+    PRIVATE_KEY: env.PRIVATE_KEY,
+    NODE_SOCKET: env.NODE_SOCKET
   }
 }

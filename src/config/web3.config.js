@@ -1,16 +1,19 @@
-const { blockchain } = require('../config/index');
+const { blockchain } = require('./index');
 const erc721 = require('../artifacts/magnaBadge.json');
 const HDWalletProvider = require('truffle-hdwallet-provider');
 const Web3 = require('web3');
 
-const provider = new HDWalletProvider(blockchain.PRIVATE_KEY, blockchain.NODE)
-const web3 = new Web3(provider)
+const provider = new HDWalletProvider(blockchain.PRIVATE_KEY, blockchain.NODE_SOCKET)
+const web3 = new Web3(new Web3.providers.WebsocketProvider(blockchain.NODE_SOCKET))
 
 
 module.exports = async () => {
     const contractInstance_721 = await new web3.eth.Contract(erc721, blockchain.CONTRACT_ADDRESS_721)
 
-    console.log('contractInstance 721 ', contractInstance_721)
+    contractInstance_721.events.Transfer({ filter: { from: "0x0000000000000000000000000000000000000000" } }).on('data', async (event) => {
+        console.log('received events ', event);
+    }).on('error', console.error);
+
 
     async function getNonce(numb) {
         const number = await web3.eth.getTransactionCount(blockchain.SIGNING_ADDRESS)
