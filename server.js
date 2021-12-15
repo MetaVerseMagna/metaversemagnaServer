@@ -19,7 +19,7 @@ require("./src/middlewares/error.middleware")(app);
 // Listen to server port
 app.listen(PORT, async () => {
   //Initialize MongoDB
-  // await require("./src/config/mongo-db.config")()
+  await require("./src/config/mongo-db.config")()
   console.log(`✅ :::> Ping master, your server is listening on port ${PORT} \n\n   :::> http://localhost:${PORT}`);
 });
 
