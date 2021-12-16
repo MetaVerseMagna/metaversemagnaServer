@@ -1,0 +1,13 @@
+version: "3"
+services:
+    magna-server:
+        image: node
+        container_name: magna-server
+        ports:
+        - "2020:80"
+        volumes:
+        - ./:/opt/app
+        command: bash -c "npm run dev"
+        working_dir: /opt/app
+
+    
