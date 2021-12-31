@@ -20,6 +20,12 @@ class UserService {
     return user
   }
 
+  async update(data) {
+    await User.updateOne({ ...data });
+
+    return;
+  }
+
 
 }
 

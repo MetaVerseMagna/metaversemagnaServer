@@ -11,6 +11,16 @@ class TokenController {
     res.status(200).send((response("users data", result)).data);
   }
 
+  async whitelistUsername(req, res) {
+    const result = await TokenService.whitelistUsername(req.query);
+    res.status(200).send(response("Address whitelisted ", result));
+  }
+
+  async validateUsernameAccess(req, res) {
+    const result = await TokenService.validateUsernameAccess(req.query);
+    res.status(200).send(response("Username whitelist result ", result));
+  }
+
 
 }
 

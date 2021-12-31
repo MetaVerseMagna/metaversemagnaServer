@@ -18,6 +18,9 @@ const userSchema = new Schema({
   tokenId: {
     type: String,
     required: true
+  },
+  discordUsername: {
+    type: String
   }
 }, { timestamps: true });
 
