@@ -68,7 +68,7 @@ class TokenService {
     //check that username is whitelisted 
     const user = await User.findOne({ discordUsername: name })
 
-    if (!user) throw new CustomError("Username not whitelisted ", 400);
+    if (!user) return { isUsernameWhitelisted: false }
 
     return { isUsernameWhitelisted: true };
 
